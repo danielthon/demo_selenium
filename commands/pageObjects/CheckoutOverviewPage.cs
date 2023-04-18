@@ -10,7 +10,7 @@ namespace commands.pageObjects
 {
     public class CheckoutOverviewPage : SharedComponentsBetweenPages
     {
-        internal static string Url { get { return "/cart"; } }
+        internal override string Url { get { return "checkout-step-two.html"; } }
 
         internal IWebElement lblFirstCartItemName => Commands.findElement(By.CssSelector(".cart_list .inventory_item_name"));
         internal IWebElement btnCheckout => Commands.findElement(By.Id("checkout"));

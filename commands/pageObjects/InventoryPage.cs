@@ -10,7 +10,7 @@ namespace commands.pageObjects
 {
     public class InventoryPage : SharedComponentsBetweenPages
     {
-        internal static string Url { get { return "/inventory"; } }
+        internal override string Url { get { return "inventory.html"; } }
 
 
         internal IWebElement lblItemName(string productName) => Commands.findElement(By.XPath($"//*[text()='{productName}']"));

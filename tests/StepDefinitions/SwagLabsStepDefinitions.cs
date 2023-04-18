@@ -188,7 +188,7 @@ namespace tests.StepDefinitions
         [AfterScenario("@cart")]
         public void AfterCartScenarios()
         {
-            new SharedComponentsBetweenPages().resetAppState();
+            new SharedComponentsBetweenPages(false).resetAppState();
             _specFlowOutputHelper.addLog($"Cart reset!");
         }
     }
