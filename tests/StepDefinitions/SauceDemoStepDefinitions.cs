@@ -8,11 +8,11 @@ using commands.selenium;
 namespace tests.StepDefinitions
 {
     [Binding]
-    public class SwagLabsStepDefinitions
+    public class SauceDemoStepDefinitions
     {
         ISpecFlowOutputHelper _specFlowOutputHelper;
 
-        public SwagLabsStepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper)
+        public SauceDemoStepDefinitions(ISpecFlowOutputHelper specFlowOutputHelper)
         {
             _specFlowOutputHelper = specFlowOutputHelper;
         }

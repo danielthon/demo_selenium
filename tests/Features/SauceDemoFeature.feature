@@ -1,4 +1,4 @@
-﻿Feature: SwagLabsFeature
+﻿Feature: SauceDemo
 
 A short summary of the feature
 
@@ -13,7 +13,7 @@ Scenario: View product information
 	Then the 'Sauce Labs Backpack' product description should be 'carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.'
 
 @e2e @cart @checkout
-Scenario Outline: Checkout two products
+Scenario Outline: Checkout product
 	Given I am logged as '<username>' with password '<password>' in the products page
 	When I add 'Sauce Labs Bike Light' product to the cart
 	And I click on the cart
