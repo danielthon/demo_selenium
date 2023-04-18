@@ -33,7 +33,7 @@ namespace tests.Support
         [BeforeScenario] public void BeforeScenario(ScenarioContext scenarioContext) { _scenarioContext = scenarioContext; }
         [AfterScenario] public void AfterScenario() { }
 
-        [BeforeStep] public void BeforeStep() { _specFlowOutputHelper.addLog($"Started at {DateTime.Now:HH:mm:ss.f}"); }
+        [BeforeStep] public void BeforeStep() { _specFlowOutputHelper.addLog($"Started at"); }
         [AfterStep]  public void AfterStep() { _specFlowOutputHelper.addScreenshot(); }
     }
 }

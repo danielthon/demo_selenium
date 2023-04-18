@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace commands.pageObjects
 {
-    public class InventoryItemPage
+    public class InventoryItemPage : SharedComponentsBetweenPages
     {
         internal static string Url { get { return "/inventory-item"; } }
 

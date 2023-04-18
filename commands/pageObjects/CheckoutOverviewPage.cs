@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace commands.pageObjects
 {
-    public class CheckoutOverviewPage
+    public class CheckoutOverviewPage : SharedComponentsBetweenPages
     {
         internal static string Url { get { return "/cart"; } }
 

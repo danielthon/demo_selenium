@@ -11,7 +11,7 @@ using TechTalk.SpecFlow.Infrastructure;
 namespace tests.Support
 {
     [Binding]
-    internal class TestRunHooks
+    internal static class TestRunHooks
     {
         [BeforeTestRun]
         public static void BeforeFeature()
@@ -19,9 +19,6 @@ namespace tests.Support
             SeleniumWebDriver.start(
                 TestContext.Parameters.Get("browser", "chrome")
                 );
-
-            SeleniumWebDriver.RootURL = @"https://www.saucedemo.com/";
-            SeleniumWebDriver.goToURL();
         }
 
         [AfterTestRun]

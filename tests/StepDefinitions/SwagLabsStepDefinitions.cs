@@ -3,6 +3,7 @@ using tests.Support;
 using System;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Infrastructure;
+using commands.selenium;
 
 namespace tests.StepDefinitions
 {
@@ -16,13 +17,29 @@ namespace tests.StepDefinitions
             _specFlowOutputHelper = specFlowOutputHelper;
         }
 
+        [Given(@"a shopping website navigated through '([^']*)' url")]
+        public void GivenAShoppingWebsiteNavigatedThroughUrl(string p0)
+        {
+            try
+            {
+                SeleniumWebDriver.RootURL = @$"{p0}";
+                SeleniumWebDriver.goToURL();
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
+        }
+
+
         [Given(@"I am logged as '([^']*)' with password '([^']*)' in the products page")]
         public void GivenIAmLoggedAsWithPasswordInTheProductsPage(string p0, string p1)
         {
             try
             {
                 var loginPage = new LoginPage();
-                var inventoryPage = loginPage.login("standard_user", "secret_sauce");
+                var inventoryPage = loginPage.login(p0, p1);
             }
             catch (Exception e)
             {
@@ -128,7 +145,21 @@ namespace tests.StepDefinitions
             try
             {
                 var checkoutStep1 = new CheckoutYourInformationPage();
-                checkoutStep1.fillYourInformation("Gandalf", "The Gray", "12345678");
+                checkoutStep1.fillYourInformation("Gandalf", "The Grey", "12345678");
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
+        }
+
+        [When(@"I proceed to continue checkout")]
+        public void WhenIProceedToContinueCheckout()
+        {
+            try
+            {
+                var checkoutStep1 = new CheckoutYourInformationPage();
                 var checkoutStep2 = checkoutStep1.continueToOverview();
             }
             catch (Exception e)
@@ -137,6 +168,7 @@ namespace tests.StepDefinitions
                 throw;
             }
         }
+
 
         [Then(@"the '([^']*)' product should be listed in the products")]
         public void ThenTheProductShouldBeListedInTheProducts(string p0)
@@ -151,6 +183,13 @@ namespace tests.StepDefinitions
                 _specFlowOutputHelper.addErrorLog(e);
                 throw;
             }
+        }
+
+        [AfterScenario("@cart")]
+        public void AfterCartScenarios()
+        {
+            new SharedComponentsBetweenPages().resetAppState();
+            _specFlowOutputHelper.addLog($"Cart reset!");
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using commands.exceptions;
 using System.Globalization;
+using System.Linq.Expressions;
 
 namespace commands.selenium
 {
@@ -97,6 +98,13 @@ namespace commands.selenium
             }
         }
 
+
+        internal static IWebElement findElementWaitingtUntilVisible(By by, int timeoutInSeconds = 5)
+        {
+            var wait = new WebDriverWait(SeleniumWebDriver.Driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            var element = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(by));
+            return element;
+        }
 
         public static void assert(string expected, string current)
         {

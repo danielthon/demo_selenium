@@ -18,12 +18,12 @@ namespace tests.Support
 
         public static void addErrorLog(this ISpecFlowOutputHelper specFlowOutputHelper, Exception e)
         {
-            specFlowOutputHelper.WriteLine($"\"{e.Message}\" - Exception caught {e.StackTrace} - ({DateTime.Now:yyyy/MM/dd - HH:mm:ss})");
+            specFlowOutputHelper.WriteLine($"\"{e.Message}\" \r\n \r\n Exception caught {e.StackTrace} \r\n \r\n ({DateTime.Now:yyyy/MM/dd - HH:mm:ss.f})");
         }
 
         public static void addLog(this ISpecFlowOutputHelper specFlowOutputHelper, string message)
         {
-            specFlowOutputHelper.WriteLine($"{message} ({DateTime.Now:yyyy/MM/dd - HH:mm:ss})");
+            specFlowOutputHelper.WriteLine($"{message} ({DateTime.Now:yyyy/MM/dd - HH:mm:ss.f})");
         }
     }
 }
