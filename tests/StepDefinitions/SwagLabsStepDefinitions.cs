@@ -80,31 +80,77 @@ namespace tests.StepDefinitions
         [When(@"I add '([^']*)' product to the cart")]
         public void WhenIAddProductToTheCart(string p0)
         {
-            throw new PendingStepException();
+            try
+            {
+                var inventoryPage = new InventoryPage();
+                inventoryPage.addToCart(p0);
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
 
         [When(@"I click on the cart")]
         public void WhenIClickOnTheCart()
         {
-            throw new PendingStepException();
+            try
+            {
+                var inventoryPage = new InventoryPage();
+                var cartPage = inventoryPage.goToCart();
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
 
         [When(@"I proceed to checkout")]
         public void WhenIProceedToCheckout()
         {
-            throw new PendingStepException();
+            try
+            {
+                var cartPage = new CartPage();
+                var checkout = cartPage.goToCheckout();
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
 
         [When(@"I fill the step one with my information")]
         public void WhenIFillTheStepOneWithMyInformation()
         {
-            throw new PendingStepException();
+            try
+            {
+                var checkoutStep1 = new CheckoutYourInformationPage();
+                checkoutStep1.fillYourInformation("Gandalf", "The Gray", "12345678");
+                var checkoutStep2 = checkoutStep1.continueToOverview();
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
 
         [Then(@"the '([^']*)' product should be listed in the products")]
         public void ThenTheProductShouldBeListedInTheProducts(string p0)
         {
-            throw new PendingStepException();
+            try
+            {
+                var checkoutStep2 = new CheckoutOverviewPage();
+                checkoutStep2.assertCheckoutProductTitle(p0);
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
     }
 }

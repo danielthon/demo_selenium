@@ -13,22 +13,34 @@ namespace commands.pageObjects
         internal static string Url { get { return "/inventory"; } }
 
 
-        internal IWebElement lblItemName(string name) => Commands.findElement(By.XPath($"//*[text()='{name}']"));
+        internal IWebElement lblItemName(string productName) => Commands.findElement(By.XPath($"//*[text()='{productName}']"));
+        internal IWebElement btnAddToCart(string productName) => Commands.findElement(By.XPath($"//*[text()='{productName}']/../../..//button"));
         internal IWebElement dropSort => Commands.findElement(By.CssSelector(".product_sort_container"));
+        internal IWebElement btnCart => Commands.findElement(By.Id("shopping_cart_container"));
 
 
         public InventoryPage sortProductsBy(string criteria)
         {
             dropSort.dropDownSelectByText(criteria);
-
             return this;
         }
 
-        public InventoryPage clickProduct(string name) 
+        public InventoryPage clickProduct(string productName) 
         {
-            lblItemName(name).click();
-
+            lblItemName(productName).click();
             return this;
+        }
+
+        public InventoryPage addToCart(string productName)
+        {
+            btnAddToCart(productName).click();
+            return this;
+        }
+
+        public CartPage goToCart()
+        {
+            btnCart.click();
+            return new CartPage();
         }
     }
 }

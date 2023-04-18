@@ -19,14 +19,16 @@ namespace commands.pageObjects
 
         public InventoryItemPage assertProductTitle(string title)
         {
-            Commands.assert(title, lblTitle.Text);
+            string currentText = lblTitle.Text;
+            Commands.assert(title, currentText);
 
             return this;
         }
 
         public InventoryItemPage assertProductDescription(string description)
         {
-            Commands.assert(description, lblDescription.Text);
+            string currentText = lblDescription.Text;
+            Commands.assert(description, currentText);
 
             return this;
         }
