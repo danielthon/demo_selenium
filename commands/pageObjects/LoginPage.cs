@@ -23,12 +23,8 @@ namespace commands.pageObjects
             txtUsername.typeText(username);
             txtPassword.typeText(pwd);
 
-            // Report.addLog(Status.Info, $"Page {Url} accessed");
-
             btnLogin.Click();
             var inventory = new InventoryPage();
-
-            //Report.addLog(Status.Pass, $"Login done with user '{username}'");
 
             return inventory;
         }

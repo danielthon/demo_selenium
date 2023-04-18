@@ -21,13 +21,12 @@ namespace tests.StepDefinitions
         {
             try
             {
-                var home = new LoginPage().login("standard_user", "secret_sauce");
-                _specFlowOutputHelper.addLog("testing inside");
+                var loginPage = new LoginPage();
+                var inventoryPage = loginPage.login("standard_user", "secret_sauce");
             }
             catch (Exception e)
             {
                 _specFlowOutputHelper.addErrorLog(e);
-                _specFlowOutputHelper.addScreenshot();
                 throw;
             }
         }
@@ -37,12 +36,12 @@ namespace tests.StepDefinitions
         {
             try
             {
-                throw new Exception("error woololo");
+                var inventoryPage = new InventoryPage();
+                inventoryPage.sortProductsBy(p0);
             }
             catch (Exception e)
             {
                 _specFlowOutputHelper.addErrorLog(e);
-                _specFlowOutputHelper.addScreenshot();
                 throw;
             }
         }
@@ -50,13 +49,32 @@ namespace tests.StepDefinitions
         [When(@"I click in '([^']*)' product")]
         public void WhenIClickInProduct(string p0)
         {
-            throw new PendingStepException();
+            try
+            {
+                var inventoryPage = new InventoryPage();
+                var inventoryItemPage = inventoryPage.clickProduct(p0);
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
 
         [Then(@"the '([^']*)' product description should be '([^']*)'")]
         public void ThenTheProductDescriptionShouldBe(string p0, string p1)
         {
-            throw new PendingStepException();
+            try
+            {
+                var inventoryItemPage = new InventoryItemPage();
+                inventoryItemPage.assertProductTitle(p0);
+                inventoryItemPage.assertProductDescription(p1);
+            }
+            catch (Exception e)
+            {
+                _specFlowOutputHelper.addErrorLog(e);
+                throw;
+            }
         }
 
         [When(@"I add '([^']*)' product to the cart")]

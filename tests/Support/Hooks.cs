@@ -13,11 +13,11 @@ using TechTalk.SpecFlow;
 namespace tests.Support
 {
     [Binding]
-    public class FeatureHooks
+    public class Hooks
     {
         private readonly ISpecFlowOutputHelper _specFlowOutputHelper;
 
-        public FeatureHooks(ISpecFlowOutputHelper specFlowOutputHelper) { _specFlowOutputHelper = specFlowOutputHelper; }
+        public Hooks(ISpecFlowOutputHelper specFlowOutputHelper) { _specFlowOutputHelper = specFlowOutputHelper; }
 
         private static FeatureContext? _featureContext;
         private static ScenarioContext? _scenarioContext;
@@ -34,6 +34,6 @@ namespace tests.Support
         [AfterScenario] public void AfterScenario() { }
 
         [BeforeStep] public void BeforeStep() { }
-        [AfterStep]  public void AfterStep() { }
+        [AfterStep]  public void AfterStep() { _specFlowOutputHelper.addScreenshot(); }
     }
 }
