@@ -59,6 +59,7 @@ namespace commands.selenium
             {
                 case ChromeOptions chrome:
                     chrome.AddArguments("disable-extensions");
+                    chrome.AddArguments("--headless=new");
                     Driver = new ChromeDriver(DriversPath, chrome);
                     break;
 

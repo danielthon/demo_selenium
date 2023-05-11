@@ -49,7 +49,6 @@ namespace commands.selenium
             if (!element.Displayed)
                 throw new ElementNotVisibleException($"'{element.TagName}' (class={element?.GetCssValue("class")}) was found on the page, but it's not visible/accessible.");
 
-            element.Clear();
             element?.SendKeys(entrada);
         }
         internal static void click(this IWebElement element)
