@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace commands.pageObjects
+namespace commands.pages
 {
     public class CheckoutOverviewPage : SharedComponentsBetweenPages
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace commands.pageObjects
+namespace commands.pages
 {
     public class InventoryPage : SharedComponentsBetweenPages
     {
@@ -17,7 +17,10 @@ namespace commands.pageObjects
         internal IWebElement btnAddToCart(string productName) => Commands.findElement(By.XPath($"//*[text()='{productName}']/../../..//button"));
         internal IWebElement dropSort => Commands.findElement(By.CssSelector(".product_sort_container"));
         internal IWebElement btnCart => Commands.findElement(By.Id("shopping_cart_container"));
+        private IWebElement waitForBtnCart() => Commands.findElementWaitingtUntilVisible(By.Id("shopping_cart_container"), 8);
 
+
+        public void waitForPageLoad() => waitForBtnCart();
 
         public InventoryPage sortProductsBy(string criteria)
         {

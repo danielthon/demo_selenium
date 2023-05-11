@@ -1,4 +1,4 @@
-using commands.pageObjects;
+using commands.pages;
 using tests.Support;
 using System;
 using TechTalk.SpecFlow;
@@ -47,6 +47,14 @@ namespace tests.StepDefinitions
                 throw;
             }
         }
+
+        [Given(@"the shopping cart is empty")]
+        public void GivenTheShoppingCartIsEmpty()
+        {
+            new SharedComponentsBetweenPages(false).resetAppState();
+            _specFlowOutputHelper.addLog($"Cart reset!");
+        }
+
 
         [When(@"I sort the products by '([^']*)'")]
         public void WhenISortTheProductsBy(string p0)
@@ -183,13 +191,6 @@ namespace tests.StepDefinitions
                 _specFlowOutputHelper.addErrorLog(e);
                 throw;
             }
-        }
-
-        [AfterScenario("@cart")]
-        public void AfterCartScenarios()
-        {
-            new SharedComponentsBetweenPages(false).resetAppState();
-            _specFlowOutputHelper.addLog($"Cart reset!");
         }
     }
 }

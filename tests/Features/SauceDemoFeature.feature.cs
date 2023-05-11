@@ -35,7 +35,7 @@ namespace tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SauceDemo", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "SauceDemo", "Tests end-to-end to cover features related to product and checkout.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -78,7 +78,7 @@ namespace tests.Features
 #line 5
 #line hidden
 #line 6
-    testRunner.Given("a shopping website navigated through \'https://www.saucedemo.com/\' url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("a shopping website navigated through \'https://saucedemo.com/\' url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -185,21 +185,24 @@ this.FeatureBackground();
  testRunner.Given(string.Format("I am logged as \'{0}\' with password \'{1}\' in the products page", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 18
- testRunner.When("I add \'Sauce Labs Bike Light\' product to the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the shopping cart is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
- testRunner.And("I click on the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I add \'Sauce Labs Bike Light\' product to the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 20
- testRunner.And("I proceed to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I click on the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 21
- testRunner.And("I fill the step one with my information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I proceed to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
- testRunner.And("I proceed to continue checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I fill the step one with my information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 23
+ testRunner.And("I proceed to continue checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
  testRunner.Then("the \'Sauce Labs Bike Light\' product should be listed in the products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

@@ -1,5 +1,5 @@
 ﻿using commands.selenium;
-using commands.pageObjects;
+using commands.pages;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

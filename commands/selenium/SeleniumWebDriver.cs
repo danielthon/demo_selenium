@@ -71,7 +71,7 @@ namespace commands.selenium
                     throw new ArgumentException("This browser is not supported.");
             }
 
-            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(4);
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
         }
 
         public static void stop()
@@ -95,6 +95,11 @@ namespace commands.selenium
         public static void goBack()
         {
             Driver?.Navigate().Back();
+        }
+
+        public static void pageReload()
+        {
+            Driver?.Navigate().Refresh();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿Feature: SauceDemo
 
-A short summary of the feature
+Tests end-to-end to cover features related to product and checkout.
 
 Background:
-    Given a shopping website navigated through 'https://www.saucedemo.com/' url
+    Given a shopping website navigated through 'https://saucedemo.com/' url
 
 @e2e @product-view
 Scenario: View product information
@@ -15,6 +15,7 @@ Scenario: View product information
 @e2e @cart @checkout
 Scenario Outline: Checkout product
 	Given I am logged as '<username>' with password '<password>' in the products page
+	And the shopping cart is empty
 	When I add 'Sauce Labs Bike Light' product to the cart
 	And I click on the cart
 	And I proceed to checkout
@@ -23,8 +24,8 @@ Scenario Outline: Checkout product
 	Then the 'Sauce Labs Bike Light' product should be listed in the products
 
 Examples: 
-	| username | password |
-	| standard_user | secret_sauce |
-	| performance_glitch_user | secret_sauce |
-	| problem_user | secret_sauce |
-	| locked_out_user | secret_sauce |
+ | username                | password     |
+ | standard_user           | secret_sauce |
+ | performance_glitch_user | secret_sauce |
+ | problem_user            | secret_sauce |
+ | locked_out_user         | secret_sauce |

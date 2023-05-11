@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace commands.pageObjects
+namespace commands.pages
 {
     public class LoginPage
     {
@@ -25,6 +25,8 @@ namespace commands.pageObjects
 
             btnLogin.Click();
             var inventory = new InventoryPage();
+            
+            inventory.waitForPageLoad();
 
             return inventory;
         }
